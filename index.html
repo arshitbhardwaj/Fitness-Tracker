@@ -8,6 +8,55 @@
     <link rel="stylesheet" href="style.css">
     <title>Fitness World</title>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('progressChart').getContext('2d');
+  const progressChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      datasets: [{
+        label: 'Steps Walked',
+        data: [5000, 6500, 7000, 7500, 7200, 8000, 8500],
+        backgroundColor: 'rgba(69, 255, 202, 0.2)',
+        borderColor: '#45ffca',
+        borderWidth: 3,
+        tension: 0.4
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: "#fff"
+          }
+        },
+        x: {
+          ticks: {
+            color: "#fff"
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: "#fff"
+          }
+        }
+      }
+    }
+  });
+</script>
+
+<nav class="bottom-nav">
+  <a href="#track"><i class='bx bx-home'></i><span>Home</span></a>
+  <a href="#log"><i class='bx bx-dumbbell'></i><span>Log</span></a>
+  <a href="#progress"><i class='bx bx-line-chart'></i><span>Progress</span></a>
+  <a href="#profile"><i class='bx bx-user'></i><span>Profile</span></a>
+</nav>
+
+
 <body>
 
     <!--header section-->
@@ -29,27 +78,63 @@
 
     </header>
 
-    <section class="home" id="home">
-        <!--watermark-->
-        <div class="watermark">Arshit</div>
+    <!-- Tracker Dashboard Section -->
+<section class="dashboard" id="track">
+    <h2 class="heading">Your <span>Dashboard</span></h2>
 
-            <div class="home-content">
+    <div class="dashboard-cards">
+        <div class="card">
+            <h4>Steps Today</h4>
+            <p>7,520</p>
+        </div>
+        <div class="card">
+            <h4>Calories Burned</h4>
+            <p>580 kcal</p>
+        </div>
+        <div class="card">
+            <h4>Water Intake</h4>
+            <p>1.5 L</p>
+        </div>
+        <div class="card">
+            <h4>Weight</h4>
+            <p>70 kg</p>
+        </div>
+    </div>
 
-                <h3>Build Your</h3>
-                <h1>Dream Physique</h1>
-                <h3><span class="multiple-text">BodyBuilding</span></h3>
+    <div class="goal-section">
+        <h3>Daily Goals</h3>
+        <div class="goal">
+            <label>Steps</label>
+            <progress value="75" max="100"></progress>
+        </div>
+        <div class="goal">
+            <label>Calories</label>
+            <progress value="65" max="100"></progress>
+        </div>
+        <div class="goal">
+            <label>Water</label>
+            <progress value="60" max="100"></progress>
+        </div>
+    </div>
+</section>
 
-                <p>"Transformation takes time, but with the right tools, every day brings you closer. Track your workouts, fuel your motivation, and conquer your fitness goals."
-                </p>
+<section class="chart-section">
+  <h2 class="heading">Weekly <span>Progress</span></h2>
+  <canvas id="progressChart" width="400" height="200"></canvas>
+</section>
 
-                <a href="#" class="btn">Join Us</a>
-        
-            </div>
+<section class="log-workout">
+  <h2 class="heading">Log <span>Your Workout</span></h2>
+  <form class="log-form">
+    <input type="text" placeholder="Exercise Name" required />
+    <input type="number" placeholder="Duration (minutes)" required />
+    <input type="number" placeholder="Calories Burned" required />
+    <button type="submit" class="btn">Add Workout</button>
+  </form>
+</section>
 
-                <div class="home-img">
-                    <img src="assets/images/images.jpg" alt="Fitness Image" class="right-img" >
-                </div>
-    </section>
+
+
 
     <!--Services Section code-->
     <section class="services" id="services">
